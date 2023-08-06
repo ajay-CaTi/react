@@ -11,16 +11,8 @@
       <h1>Replace/Not Append by the parent tag</h1>
       <h1>React is working in this root</h1>
     </div>
-    <script
-      crossorigin
-      src="https://unpkg.com/react@18/umd/react.development.js"
-    ></script>
-    <!-- React core  -->
-    <script
-      crossorigin
-      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
-    ></script>
-    <script src="./App.js">
+
+    <script type="module" src="./App.js">
       // h1 an object, put content
     </script>
     <!-- react-dom bridge connect with dome  -->
@@ -41,3 +33,51 @@
 <!-- ORDER OF FILES ATTACHED IS MATTERS -->
 
 <!-- Framework :- comes all load of thngs  -->
+
+<!-- NPM:- PACKAGE MANAGEr npm is everything but not node package manager -->
+
+<!-- when a basic react app created it already have npm inside it   -->
+
+<!-- The crossorigin attribute, valid on the <audio>, <img>, <link>, <script>, and <video> elements, provides support for CORS, defining how the element handles cross-origin requests, thereby enabling the configuration of the CORS requests for the element's fetched data. Depending on the element, the attribute can be a CORS settings attribute.
+
+The crossorigin content attribute on media elements is a CORS settings attribute. -->
+
+<!-- package.json is a CONFIGURATION FOR NPM -->
+<!-- create-react-app uses webpack and bable behind the scenes -->
+
+<!-- parcel to bundler our app  -->
+
+<!-- two type of dependicies we install 
+1. Dev for development
+2. Normal for production -->
+
+<!-- CAReT   PARCEL -->
+<!-- caret [automatically install MINOR version of that package like 2.9.3 to 2.9.6 ] -->
+<!-- CARET is alwayas SAFER  -->
+<!-- tilde -->
+<!-- Tilde (~) notation: It is used to match the most recent patch version. [automatically install MAJOR version of that package like 2.9.3 to 3.0.0 ]-->
+
+<!-- package-lock.json 
+  configuraton for npm
+  keep track version of that package install in system  -->
+
+<!-- package-lock.json 
+  integrity:-keep hash what version is installed in my machine is same deployed in production -->
+
+<!-- node_modules folder contain all the code that fetch from npm
+Act like DB contain actual data of that dependency that our app needs 
+collection of dependencies-->
+
+<!-- parcel as a project has its own dependencies known as TRANSITIVE DPENDENCIES -->
+
+<!-- package.json keep approx version of package -->
+
+<!-- npm
+npm init
+package.json
+dev dependency
+parcel
+caret and tilde 
+package-lock.json -->
+
+<!-- npx execute the package -->

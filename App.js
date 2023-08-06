@@ -13,7 +13,8 @@
 // createElement :- TAKES 3 API {1. NAME OF TAG HE, DIV, 2. ATTRIBUTE(OBJECTS), CHILDREN} MULTIPLE CHILDREN PASS IN LIST OF ARRAY
 
 // WHAT EVER IS ROOT IS REPLACE BY ROOT.RENDER() FUNCTION
-
+import React from "react";
+import ReactDOM from "react-dom/client";
 const parent = React.createElement("div", { id: "parent" }, [
   React.createElement("div", { id: "child" }, [
     React.createElement("h1", { className: "mm" }, "i am heading"),
@@ -24,9 +25,12 @@ const parent = React.createElement("div", { id: "parent" }, [
     React.createElement("h2", { className: "mm" }, "i am h2 heading"),
   ]),
 ]);
+
+const jsxHeading = <h1 id="heading">Ram ram bhai</h1>;
+// JSX - is HTML like syntax but not HTML
 const root = ReactDOM.createRoot(document.getElementById("root"));
 console.log(parent);
-root.render(parent); // render te parent to my root
+root.render(jsxHeading); // render te parent to my root
 // .render() Job is :- TAke this object and create h1 tag i.e understandable by browser and put it inside root
 
 // echo "# react" >> README.md
