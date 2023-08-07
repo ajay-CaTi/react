@@ -1,3 +1,19 @@
+import React from "react";
+import ReactDOM from "react-dom/client";
+import Header from "./component/Header";
+import Body from "./component/Body";
+
+const App = () => {
+  return (
+    <div className="app">
+      <Header />
+      <Body />
+    </div>
+  );
+};
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<App />);
 // const heading = React.createElement(
 //   "h1",
 //   { id: "heading" },
@@ -13,43 +29,11 @@
 // createElement :- TAKES 3 API {1. NAME OF TAG HE, DIV, 2. ATTRIBUTE(OBJECTS), CHILDREN} MULTIPLE CHILDREN PASS IN LIST OF ARRAY
 
 // WHAT EVER IS ROOT IS REPLACE BY ROOT.RENDER() FUNCTION
-import React from "react";
-import ReactDOM from "react-dom/client";
+// PLANNING
+// SLOWLY BUILT CODE
 
-const Header = () => {
-  return (
-    <div className="header">
-      <div className="logo_container">
-        <img
-          className="logo"
-          src="https://i.pinimg.com/originals/b3/e5/f3/b3e5f321d4aedcf983a6c95f5a6d0b88.png"
-          alt="logo_img"
-        />
-      </div>
-      <div className="nav_items">
-        <ul>
-          <li>Home</li>
-          <li>About Us</li>
-          <li>Contact us</li>
-          <li>Cart</li>
-        </ul>
-      </div>
-    </div>
-  );
-};
-
-const RestaurantCard = (props) => {
-  // const {name}=props;
-  const { pageTitle, ogDescription, quzines } = props.name;
-  return (
-    <div className="res_card">
-      <h3>MaheshWar Foods</h3>
-      <h3>{pageTitle}, dal chawal, kadhi, roti</h3>
-      <h3>{quzines.join(", ")}, dal chawal, kadhi, roti</h3>
-      <h3>{ogDescription}, dal chawal, kadhi, roti</h3>
-    </div>
-  );
-};
+// wHY USE FRAMEWORK OR LIBRARY?
+// MAKES DEVELOPER EXPERIENCE EASY WRITE LESS CODE AND GIVE MORE ON WEB PAGE
 
 // Config Driven UI:- Web app is driven by DATA [How the UI Look Like USING DATA && and config comes from backend [it is the latest prectice that every company follows] Even for every city tere will be different data shon on every city/state]
 
@@ -57,57 +41,15 @@ const RestaurantCard = (props) => {
 
 // Good senior front end developeer Engineer is very good in UI and DATA LAyer Engineer
 
-const data = {
-  name: "search",
-  pageTitle: "Restaurants in Delhi NCR - Zomato",
-  pageDescription:
-    "Check out the list of all Restaurants in Delhi NCR. Check their menu, reviews & rating, photos, price, location, cuisine, offers, and more.",
-  pageUrl:
-    "/ncr/restaurants?place_name=Ywca, 1, Ashoka Rd, Hanuman Road Area, Connaught Place, New Delhi, Delhi",
-  title: "Restaurants in Delhi NCR - Zomato",
-  isNoIndex: false,
-  ogTitle: "Restaurants in Delhi NCR - Zomato",
-  ogDescription:
-    "Check out the list of all Restaurants in Delhi NCR. Check their menu, reviews & rating, photos, price, location, cuisine, offers, and more.",
-  ogPageUrl:
-    "/ncr/restaurants?place_name=Ywca, 1, Ashoka Rd, Hanuman Road Area, Connaught Place, New Delhi, Delhi",
-  subType: "delivery",
-  quzines: ["some", "thing", "good", "alwayas", "there", "be", "positive"],
-  isMobile: 0,
-  isTablet: 0,
-  isOAuthV2Enabled: false,
-  useAuthSdkForLogin: true,
-  useAuthSdkForLogout: false,
-  gaPageType: "Search",
-};
+// What CDN does Cloudinary use?
+// Cloudinary leverages multiple CDNs, including Akamai, the leading CDN provider, with thousands of global delivery servers. Together with Cloudinary's advanced caching techniques and dynamic URL-based image delivery, your resources are efficiently delivered to your users all around the world.
 
-const Body = () => {
-  return (
-    <div className="body">
-      <div className="search">Search</div>
-      <div className="res_container">
-        <RestaurantCard name={data} />
-        {/* <RestaurantCard name={data} />
-        <RestaurantCard name={data} />
-        <RestaurantCard name={data} /> */}
-      </div>
-    </div>
-  );
-};
+// React doesnt uniquely indentify the element that why we use key
+
+// never Use INDEX as key bacause of elemnt has change didnt recommended
 
 // React function component
-const AppLayout = () => {
-  // Normal JS function that return jsx code that is functional component
-  return (
-    <div className="app">
-      <Header />
-      <Body />
-    </div>
-  );
-};
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<AppLayout />);
+// Normal JS function that return jsx code that is functional component
 
 // style{{backgroundColor:"#f0f0f0"}}
 // first curley braces for some js code and other is JS OBJECT
