@@ -8,8 +8,10 @@ import Simmer from "./Simmer";
 const Body = () => {
   // 1
   const [listOfResturants, setListOfResturants] = useState([]);
+  // keep copy in this state and filter on this
+  const [filtered, setFilteredRestaurant] = useState([]);
   const [searchText, setSearchText] = useState("");
-  // const [searchText, setSearchText] = useState('');
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -22,22 +24,22 @@ const Body = () => {
     let json = await data.json();
     console.log(json);
     setListOfResturants(json);
+    setFilteredRestaurant(json); // Clever
   };
 
-  const changeFun = (e) => {
-    let val = e.target.value;
-    setSearchText(val.toLowerCase());
-  };
+  // const changeFun = (e) => {
+  //   let val = e.target.value;
+  //   setSearchText(val.toLowerCase());
+  // };
   console.log(listOfResturants);
 
   // COnditional Rendring:-Rendring on basis of condition known as conditional rendering
 
   const filtter = () => {
-    const filteredResturant = listOfResturants.filter((res) =>
+    const filteredList = listOfResturants.filter((res) =>
       res.title.toLowerCase().includes(searchText)
     );
-    setListOfResturants(filteredResturant);
-    setListOfResturants(listOfResturants);
+    setFilteredRestaurant(filteredList);
   };
 
   if (listOfResturants.length === 0) {
@@ -56,22 +58,26 @@ const Body = () => {
     <div>
       <div className="body">
         <div className="fil">
-          <input type="text" value={searchText} onChange={changeFun} />
+          <input
+            type="text"
+            value={searchText}
+            onChange={(e) => {
+              setSearchText(e.target.value);
+            }}
+          />
           <button onClick={filtter}>Click</button>
         </div>
         <div className="res_container">
-          {listOfResturants
-            .filter((val) => val.title.toLowerCase().includes(searchText))
-            .map((value) => {
-              return (
-                <RestaurantCard
-                  key={value.id}
-                  title={value.title}
-                  url={value.url}
-                  id={value.id}
-                />
-              );
-            })}
+          {filtered.map((value) => {
+            return (
+              <RestaurantCard
+                key={value.id}
+                title={value.title}
+                url={value.url}
+                id={value.id}
+              />
+            );
+          })}
         </div>
       </div>
     </div>

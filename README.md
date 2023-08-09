@@ -21,6 +21,20 @@
 
 -Different dev and prod bundles(build)
 
+// filter item form search bar
+{listOfResturants
+.filter((val) => val.title.toLowerCase().includes(searchText))
+.map((value) => {
+return (
+<RestaurantCard
+                  key={value.id}
+                  title={value.title}
+                  url={value.url}
+                  id={value.id}
+                />
+);
+})}
+
 npx parcel build index.html
 GIVES ERROR bec
 parcel conflict with PACKAGE.JSON main:"App.js" file i.e entry point
