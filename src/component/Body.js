@@ -8,7 +8,8 @@ import Simmer from "./Simmer";
 const Body = () => {
   // 1
   const [listOfResturants, setListOfResturants] = useState([]);
-  const [fil, setFil] = useState([]);
+  const [searchText, setSearchText] = useState("");
+  // const [searchText, setSearchText] = useState('');
   useEffect(() => {
     fetchData();
   }, []);
@@ -25,7 +26,7 @@ const Body = () => {
 
   const changeFun = (e) => {
     let val = e.target.value;
-    setFil(val.toLowerCase());
+    setSearchText(val.toLowerCase());
   };
   console.log(listOfResturants);
 
@@ -33,10 +34,12 @@ const Body = () => {
 
   const filtter = () => {
     const filteredResturant = listOfResturants.filter((res) =>
-      res.title.toLowerCase().includes(fil)
+      res.title.toLowerCase().includes(searchText)
     );
     setListOfResturants(filteredResturant);
+    setListOfResturants(listOfResturants);
   };
+
   if (listOfResturants.length === 0) {
     return <Simmer />;
   }
@@ -53,12 +56,12 @@ const Body = () => {
     <div>
       <div className="body">
         <div className="fil">
-          <input type="text" value={fil} onChange={changeFun} />
+          <input type="text" value={searchText} onChange={changeFun} />
           <button onClick={filtter}>Click</button>
         </div>
         <div className="res_container">
           {listOfResturants
-            .filter((val) => val.title.toLowerCase().includes(fil))
+            .filter((val) => val.title.toLowerCase().includes(searchText))
             .map((value) => {
               return (
                 <RestaurantCard
