@@ -194,6 +194,41 @@ const setListOfResturants = arr[1];
 // fetchData();
 // },[]);
 
+// Virtu dom happens in Render Phase
+
+// RENDER PHASE:- CONSTRUCTOR, RENDER (Pure and has no side effects. May be paused, aborted or restarted by React.)
+// COMMIT PHASE:- DOM UPDATED AND COMPONENT DID MOUNT CALLED (Can work with DOM, run side effects, schedule updates.)
+
+// REACT Badge the rennder phase & commit phase
+
+// FIRST CONSTRUCTOR
+// FIRST RENDER
+
+// CHILD CONSTRUCTOR
+// CHILD RENDER
+
+// DOM UPDATES IN SINGLE BATCH
+
+// react OPTIMIZATION
+
+// FIRST componentDidMount
+// CHILD componentDidMount
+
+// react OPTIMIZATION
+
+// parent componentDidMount
+
+//WHy so Above thing happens Because once Cmmit phase is starts React tries to update the DOM and [DOM MENUULATION IS MOST EXPENSIVE THING WHEN WE UPDATING THING Beacuse it takes Time]
+
+// FIRST CONSTRUCTOR WILL CALLED -->> THEN RENDER IS CALLED -->> THEN react update DOM -->> then COMPONENTDIDMOUNT CALLED
+
+// Parent Constructor Parent Render
+// Child Constructor Child Render
+
+// export default About;
+
+// GraphQl Helps in Under and Over fetching Lode only data which is required in app
+
 // COnditional Rendring:-Rendring on basis of condition known as conditional rendering
 
 // fetch() Given by Browser

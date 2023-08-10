@@ -7,49 +7,79 @@ export default class UserClass extends Component {
 
     // create STATE LIKE below
     this.state = {
-      count: 0,
+      userInfo: {
+        login: "dummy@gmail.com",
+        id: "457821",
+        name: "dummy",
+        created_at: "24/05/2020",
+        avatar_url: "ddssaa.com",
+      },
+      //   userInfo: {},
     };
-    console.log(props, this.state);
+    console.log(props);
   }
 
-  componentDidMount() {
-    console.log(this.props.name + "componentDidMount");
+  async componentDidMount() {
+    const data = await fetch("https://api.github.com/users/ajay-CaTi");
+    const json = await data.json();
+    this.setState({
+      userInfo: json,
+    });
+    console.log(json);
+  }
+
+  componentDidUpdate() {
+    console.log("comp did update");
+  }
+
+  componentWillUnmount() {
+    // MEANS WHEN THIS COMPONENT WILL DISAPPER FROM WEB PAGE
+    console.log("componentWillUnmount");
   }
 
   render() {
-    console.log("child render");
+    const { login, id, name, created_at, avatar_url } = this.state.userInfo;
 
-    // GOLD GYAAAAAAAAAAAAAAN
-
-    // React will first render the component and then make API call to render the data{ IT DID'T WAIT FOR DATA TO RENDER THE COMPONENT }
-
-    // render method will return sone jsx thst will show to user
-    const { name, location } = this.props;
-    const { count } = this.state;
-
+    // debugger;
     return (
       <div>
         <h1>Hello class component</h1>
         <br />
         <div className="user_card">
+          <img src={avatar_url} alt={name} width={"200px"} />
           <h1>Hi User</h1>
+          <h2>Login: {login}</h2>
           <h2>Name: {name}</h2>
-          <h2>Location: {location}</h2>
-          <button
-            onClick={() => {
-              // Never Update State Variables Directly like this.state.count = this.state.count ++;
-              this.setState({ count: count + 1 });
-            }}
-          >
-            Click
-          </button>
-          <h2>State: {count}</h2>
-          <h2>Contact: @ajay.info.in</h2>
+          <h2>Id: {id}</h2>
+
+          <h2>Contact: {created_at}</h2>
         </div>
       </div>
     );
   }
 }
+
+//MOUNTING ::-- SHOWING FROM UI
+//UNMOUNTING ::-- REMOVING FROM UI WHEN IT WILL UNMOUNT [ GO TO NEST PAGE ]
+
+// IMPORTANTTTTTTTTTTT 2
+
+// constructor -->> state variable created -->> render -->> component render with dummy data --> Now componentDidMount called api call made -->> this.setState() called Mounting Complete
+
+//Now with setState it trigger Reconcillation proces in Update cycle
+
+//Now Updating Begins: -->> REACT TRIGGER render() WITH[ STATE VARIABLE WITH UPDATED NEW API DATA ] -->> React Now Update Dom -->> componentDidUpdate()
+
+// IMPORTANTTTTTTTTTTT 1
+
+// constructor -->> render -->> ReactUpdateDOM -->> setState() -->> render -->> React Update DOM -->> ComponentDidMount
+
+// GOLD GYAAAAAAAAAAAAAAN
+
+// React will first render the component and then make API call to render the data{ IT DID'T WAIT FOR DATA TO RENDER THE COMPONENT }
+
+// render method will return sone jsx thst will show to user
+
 // CONSTRUCTOR -->> RENDER -->> COMPONENTDIDMOUNT
 
 // Loading == Mounting
