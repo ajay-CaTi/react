@@ -20,6 +20,9 @@ export default class UserClass extends Component {
   }
 
   async componentDidMount() {
+    this.timer = setInterval(() => {
+      console.log("Calling...");
+    }, 1000);
     const data = await fetch("https://api.github.com/users/ajay-CaTi");
     const json = await data.json();
     this.setState({
@@ -28,13 +31,21 @@ export default class UserClass extends Component {
     console.log(json);
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.count !== prevState.count) {
+      // code
+    }
+    if (this.state.count2 !== prevState.count) {
+      // code
+    }
     console.log("comp did update");
   }
 
   componentWillUnmount() {
     // MEANS WHEN THIS COMPONENT WILL DISAPPER FROM WEB PAGE
     console.log("componentWillUnmount");
+    // CLEANUP
+    clearInterval(this.timer);
   }
 
   render() {
@@ -59,6 +70,11 @@ export default class UserClass extends Component {
   }
 }
 
+// useEffect(()=>{}) No dependency Array THEN AFTER each and EVERY RENDER useEffect() will be called
+
+// useEffect(()=>{}, []) Empty dependency Array THEN AFTER First RENDER useEffect() will be called
+
+// after componentDidMount afetr subsiquement it will update
 //MOUNTING ::-- SHOWING FROM UI
 //UNMOUNTING ::-- REMOVING FROM UI WHEN IT WILL UNMOUNT [ GO TO NEST PAGE ]
 
