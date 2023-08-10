@@ -183,4 +183,41 @@ const setListOfResturants = arr[1];
 
 // As Soon As the body render cycle finished then after the useeffect called
 
+// Hook is a type of function at the end of day but it has some specific purpose
+
+// useEffect will called after every render when dependency array is not there means
+// useEffect(() => {
+// fetchData();
+// });
+// useEffect will called only once on initial render when dependency array is empty
+// useEffect(() => {
+// fetchData();
+// },[]);
+
+// COnditional Rendring:-Rendring on basis of condition known as conditional rendering
+
+// fetch() Given by Browser
+// if origin mismatch browser block to access api
+// Browser now allowing us to call swiggy api from local host form one origin to another origin
+
+// Purpose of useState to create Local State varaibles in side functional component
+// always put state variable at the top inside functional component
+// Never use state variable inside condition
+// Never use state variable inside function
+
+// when ever create route create routing configuration(info that tells what happens on specific route) import createBrowserRouter(take list(object))
+
+// if useEffect do not have any dependency array then useEffect will call evry time my component renders, do i wnat ap call on every render NO
+// I have to do th epi call once on initial render then give empty array []
+
 // https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING
+
+# 2 type of Routing
+
+Client side Routing ::-- In React there is client side Routing only network call for api not fetching any other page
+
+Single page::--whole app loads only making network api call and and just component interchange
+
+Server side routing ::-- click on /about IT RELODS the whole page send Network call, fetch the html and render the HTML
+
+WHENEVER THERE IS CHANGE IN RECONCILLATION ALGO REACT TRIGGER reconcillation cycle(re-render the components)

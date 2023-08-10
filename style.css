@@ -1,5 +1,7 @@
 * {
   box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
 }
 
 #heading {
@@ -40,12 +42,14 @@
   border: 2px solid red;
   border-radius: 10px;
   padding: 5px;
-  align-items: center;
-  text-align: justify;
+  cursor: pointer;
+  /* align-items: center; */
+  /* text-align: justify; */
 }
 
-.res_card > img {
-  width: 100px;
+.res_card > div > a > img {
+  width: 190px;
+  margin: auto;
 }
 
 .search {
@@ -80,4 +84,29 @@
 .login {
   border-radius: 4px;
   padding: 3px 5px;
+}
+
+ul > li > a {
+  text-decoration: none;
+}
+
+.aaa {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.aaa > div {
+  border: 1px solid red;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 10px;
+  width: 250px;
+  min-height: 250px;
+}
+
+.aaa > div > img {
+  width: 220px;
+  margin: 3px;
+  border-radius: 10px;
 }
