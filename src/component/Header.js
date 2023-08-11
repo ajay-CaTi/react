@@ -1,12 +1,15 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { logo_URL } from "../utils/constants";
+import useOnlineStat from "../utils/useOnlineStat";
 
 const Header = () => {
   const [btn, setBtn] = useState("Login");
   // let btnName = "Login";
 
   // setBtn will update this btn and call the HEADER function again. Now Header wil have is new value.
+  const onlineStat = useOnlineStat();
+  console.log(onlineStat);
 
   return (
     <div className="header">
@@ -27,6 +30,7 @@ const Header = () => {
           <li>
             <Link to={"/cart"}>Cart</Link>
           </li>
+          <li>Status: {onlineStat ? "Online ✅" : "Offline 🔴"}</li>
           <li>
             <button
               className="login"

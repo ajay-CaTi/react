@@ -3,6 +3,7 @@ import image from "../utils/images/food.jpg";
 
 import { useEffect, useState } from "react";
 import Simmer from "./Simmer";
+import useOnlineStat from "../utils/useOnlineStat";
 
 const Body = () => {
   // 1
@@ -15,12 +16,12 @@ const Body = () => {
 
   useEffect(() => {
     fetchData();
-    console.log("effect");
+    // console.log("effect");
   }, []);
-  console.log("outside effect");
+  // console.log("outside effect");
 
   const fetchData = async () => {
-    console.log("useEffect called");
+    // console.log("useEffect called");
     let data = await fetch(
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     );
@@ -39,7 +40,7 @@ const Body = () => {
     ); // Clever
   };
 
-  console.log(listOfResturants);
+  // console.log(listOfResturants);
 
   // COnditional Rendring:-Rendring on basis of condition known as conditional rendering
 
@@ -47,7 +48,7 @@ const Body = () => {
     const filteredList = listOfResturants.filter((res) =>
       res.info.name.toLowerCase().includes(searchText)
     );
-    console.log(filteredList);
+    // console.log(filteredList);
     // setListOfResturants(filteredList);
     setFilteredRestaurant(filteredList);
   };
@@ -60,9 +61,15 @@ const Body = () => {
     setListOfResturants(ratingHigher);
   };
 
+  const onlineStat = useOnlineStat();
+  console.log(onlineStat);
+  if (onlineStat === false) {
+    return <h1>Looks you are offine. Check your internet connection</h1>;
+  }
   if (listOfResturants.length < 1) {
     return <Simmer />;
   }
+
   return (
     <div>
       <div className="body">

@@ -1,30 +1,33 @@
-import { useEffect, useState } from "react";
 import Simmer from "./Simmer";
 import { useParams } from "react-router-dom";
+import useRestraurantMenu from "../utils/useRestraurantMenu";
 
 const RestMenu = () => {
-  const [resInfo, setResInfo] = useState(null);
   const { resId } = useParams();
-  console.log(resId);
-  useEffect(() => {
-    fetchMenu();
-  }, []);
-  const fetchMenu = async () => {
-    const data = await fetch(
-      `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9351929&lng=77.62448069999999&restaurantId=${resId}&catalog_qa=undefined&submitAction=ENTER`
-    );
-    const json = await data.json();
-    console.log(json);
-    console.log(
-      json?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card
-        ?.card?.itemCards
-    );
-    setResInfo(
-      json?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card
-        ?.card?.itemCards
-    );
-  };
-  console.log(resInfo, "info");
+  // CUSTOM HOOK
+  const resInfo = useRestraurantMenu(resId);
+
+  // const [resInfo, setResInfo] = useState(null);
+  // console.log(resId);
+  // useEffect(() => {
+  //   fetchMenu();
+  // }, []);
+  // const fetchMenu = async () => {
+  //   const data = await fetch(
+  //     `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9351929&lng=77.62448069999999&restaurantId=${resId}&catalog_qa=undefined&submitAction=ENTER`
+  //   );
+  //   const json = await data.json();
+  //   console.log(json);
+  //   console.log(
+  //     json?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card
+  //       ?.card?.itemCards
+  //   );
+  //   setResInfo(
+  //     json?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card
+  //       ?.card?.itemCards
+  //   );
+  // };
+  // console.log(resInfo, "info");
   if (resInfo === null) {
     return <Simmer />;
   }
@@ -52,5 +55,12 @@ const RestMenu = () => {
 };
 
 export default RestMenu;
+
+// Hook are just KIND oF UTILiIY Function
+
+// Take out some responsibility from a component and extract it in a hook our hook and component become modular
+
+// why need custom hook
+// Not mendatory But doing this will make code more modular and redable, reusable
 
 // https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/wwbhls455g2syydrkmvo
