@@ -1,12 +1,16 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./component/Header";
 import Body from "./component/Body";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
-import About from "./component/About";
+
 import Contact from "./component/Contact";
+import About from "./component/About";
 import Error from "./component/Error";
 import RestMenu from "./component/RestMenu";
+// import BELOW is not same as ABOVE
+const Grocery = lazy(() => import("./component/Grocery"));
+const About = lazy(() => import("./component/About"));
 
 const App = () => {
   return (
@@ -28,7 +32,11 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/about",
-        element: <About />,
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <About />
+          </Suspense>
+        ),
       },
       {
         path: "/contact",
@@ -39,6 +47,14 @@ const appRouter = createBrowserRouter([
         element: <RestMenu />,
       },
       {
+        path: "/grocery",
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <Grocery />
+          </Suspense>
+        ),
+      },
+      {
         path: "*",
         element: <Error />,
       },
@@ -47,9 +63,31 @@ const appRouter = createBrowserRouter([
   },
 ]);
 
+// Import Like this( const Grocery = lazy(() => import("./component/Grocery")); ) Without Using Suspence will give an error as soon as we make a request for grocery the grocery bundle will take time to reach in between that time React do not have the Grocery code to render thats why thi serror comes.
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 // root.render(<App />); // directly render here but now
 root.render(<RouterProvider router={appRouter} />); //
+
+// PostCss:- tools for transforming CSS with JS
+// npx tailwindcss init: create a configur file
+// .postcssrc Configuration file for postcss
+
+// Why so above file Beacause PARCEL needs .postcssrc file to understand tailwind
+
+// content: [ "./src/**/*.{html,js,ts,jsx,tsx}", ], We can use TAILWIND Under these extension
+
+// FOR STYLE
+// Styled components
+// SCSS
+// library bootstrap, ant design, material ui, chakra ui, tailwind css
+
+// Chunking
+// Code Splitting
+// Dynamic Bundling
+// Lazy Loading
+// On Demand Loading
+// Dynamic import
 
 // echo "# react" >> README.md
 // git init

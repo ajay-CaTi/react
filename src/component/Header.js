@@ -12,25 +12,30 @@ const Header = () => {
   console.log(onlineStat);
 
   return (
-    <div className="header">
+    <div className="sm:bg-yellow-100 lg:bg-green-100 dark:bg-slate-100 flex justify-between bg-pink-100 shadow-lg mb-2">
       <div className="logo_container">
-        <img className="logo" src={logo_URL} alt="logo_img" />
+        <img className="w-20" src={logo_URL} alt="logo_img" />
       </div>
-      <div className="nav_items">
-        <ul>
-          <li>
+      <div>
+        <ul className="flex p-3 m-2">
+          <li className="px-4">
             <Link to="/">Home</Link>
           </li>
           <li>
             <Link to={"/about"}>About Us</Link>
           </li>
-          <li>
+          <li className="px-4">
             <Link to={"/contact"}>Contact us</Link>
           </li>
-          <li>
+          <li className="px-4">
+            <Link to={"/grocery"}>Grocery</Link>
+          </li>
+          <li className="px-4">
             <Link to={"/cart"}>Cart</Link>
           </li>
-          <li>Status: {onlineStat ? "Online ✅" : "Offline 🔴"}</li>
+          <li className="px-4">
+            Status: {onlineStat ? "Online ✅" : "Offline 🔴"}
+          </li>
           <li>
             <button
               className="login"
@@ -47,6 +52,9 @@ const Header = () => {
   );
 };
 export default Header;
+
+// Higher Order Function is a function that takes some component and return some component
+// HOF Takes a component as input Add some extra features to it and return it as output
 
 // React fiber, React Reconcillation algo
 

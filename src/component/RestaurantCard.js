@@ -21,14 +21,18 @@ const RestaurantCard = (props) => {
     //   <h3>{title}</h3>
     // </div>
 
-    <div className="res_card" style={{ margin: "5px 0px" }}>
+    <div style={{ margin: "5px 0px" }}>
       {cloudinaryImageId && (
-        <div>
+        <div className="m-4 p-4 w-[250px] rounded-lg bg-slate-100 p-2 hover:bg-gray-200">
           <Link to={`http://localhost:1234/restmenu/${restaurantId}`}>
-            <img src={`${imgUrl}/${cloudinaryImageId}`} alt={name} />
+            <img
+              className="rounded-lg"
+              src={`${imgUrl}/${cloudinaryImageId}`}
+              alt={name}
+            />
           </Link>
           <h3>{id || 272238}</h3>
-          <h3>{name || "Rasgulla"}</h3>
+          <h3 className="font-bold text-lg">{name || "Rasgulla"}</h3>
           <h3>{cost || "₹110 for two"} </h3>
           {/* {console.log(cuisines.join(", "))} */}
           <h3>{cuisines.join(", ")}</h3>

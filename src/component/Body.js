@@ -75,19 +75,29 @@ const Body = () => {
       <div className="body">
         <div className="fil">
           <input
+            className="rounded-lg border border-solid border-black"
             type="text"
             value={searchText}
             onChange={(e) => {
               setSearchText(e.target.value);
             }}
           />
-          <button onClick={filtter}>Click</button>
+          <button
+            className="rounded-lg ms-5 mr-5 bg-green-100 px-3 py-1"
+            onClick={filtter}
+          >
+            Click
+          </button>
 
           {/* Button to filter restraurant thata have higher rating than 4.3 */}
-          <button onClick={fil}>click here</button>
+          <button
+            className="rounded-lg ms-5 mr-5 bg-green-100 px-3 py-1"
+            onClick={fil}
+          >
+            click here
+          </button>
         </div>
-        <div className="res_container">
-          <RestaurantCard img={image} />
+        <div className="flex flex-wrap">
           {filteredRestaurant.map((val) => {
             return (
               <RestaurantCard

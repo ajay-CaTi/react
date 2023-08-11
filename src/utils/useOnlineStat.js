@@ -20,3 +20,7 @@ const useOnlineStat = () => {
 };
 
 export default useOnlineStat;
+
+// hypothetical situation ::-- kalpanic situation
+
+// Not mendatory of being capital Letter of Component and start Hook name wit use But BEcause of Most of the projects use linter, that linetr throes  error alwayas use what library recommend
