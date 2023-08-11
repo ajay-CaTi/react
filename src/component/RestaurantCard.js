@@ -15,15 +15,9 @@ const RestaurantCard = (props) => {
 
   // console.log(name);
   return (
-    // <div className="res_card" style={{ margin: "5px 0px" }}>
-    //   <img src={url} alt={title} />
-    //   <h3>{id}</h3>
-    //   <h3>{title}</h3>
-    // </div>
-
     <div style={{ margin: "5px 0px" }}>
       {cloudinaryImageId && (
-        <div className="m-4 p-4 w-[250px] rounded-lg bg-slate-100 p-2 hover:bg-gray-200">
+        <div className="m-4 w-[250px] rounded-lg bg-slate-100 p-2 hover:bg-gray-200">
           <Link to={`http://localhost:1234/restmenu/${restaurantId}`}>
             <img
               className="rounded-lg"
@@ -44,4 +38,22 @@ const RestaurantCard = (props) => {
   );
 };
 // REACT is fast in dom menupulation
+
+// Higher Order Component
+
+// Input -RestaurantCard ==>> RestaurantCardPrormoted
+
+const withPromotedLabel = (RestaurantCard) => {
+  return (props) => {
+    return (
+      <div>
+        <label className="absolute bg-black ml-7 p-1 rounded-md text-white">
+          Is Online
+        </label>
+        <RestaurantCard {...props} />
+      </div>
+    );
+  };
+};
+export { withPromotedLabel };
 export default RestaurantCard;

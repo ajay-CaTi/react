@@ -1,5 +1,5 @@
 import RestaurantCard from "./RestaurantCard";
-import image from "../utils/images/food.jpg";
+import { withPromotedLabel } from "./RestaurantCard";
 
 import { useEffect, useState } from "react";
 import Simmer from "./Simmer";
@@ -13,6 +13,8 @@ const Body = () => {
   // keep copy in this state and filter on this
   // const [filtered, setFilteredRestaurant] = useState([]);
   // const [searchText, setSearchText] = useState("");
+
+  const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
 
   useEffect(() => {
     fetchData();
@@ -40,7 +42,7 @@ const Body = () => {
     ); // Clever
   };
 
-  // console.log(listOfResturants);
+  console.log(listOfResturants);
 
   // COnditional Rendring:-Rendring on basis of condition known as conditional rendering
 
@@ -99,7 +101,19 @@ const Body = () => {
         </div>
         <div className="flex flex-wrap">
           {filteredRestaurant.map((val) => {
-            return (
+            return val.info.isOpen ? (
+              <RestaurantCardPromoted
+                key={val.info.id}
+                name={val.info.name}
+                id={val.info.id}
+                avgRating={val.info.avgRating}
+                cost={val.info.costForTwo}
+                cuisines={val.info.cuisines}
+                cloudinaryImageId={val.info.cloudinaryImageId}
+                deliveryTime={val.info.sla.deliveryTime}
+                restaurantId={val.info.feeDetails.restaurantId}
+              />
+            ) : (
               <RestaurantCard
                 key={val.info.id}
                 name={val.info.name}
