@@ -69,6 +69,8 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 // root.render(<App />); // directly render here but now
 root.render(<RouterProvider router={appRouter} />); //
 
+// git remote set-url origin https://github.com/OWNER/REPOSITORY.git
+
 // PostCss:- tools for transforming CSS with JS
 // npx tailwindcss init: create a configur file
 // .postcssrc Configuration file for postcss

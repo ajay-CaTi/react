@@ -133,6 +133,10 @@ const Body = () => {
   );
 };
 
+// All React Apps have 2 layers
+// 1. Data layer (Consist of Sates Props Local Variables What ever data in app)
+// 2. UI Layer Powered by (Data Layer)
+
 // As soon as component loading finish the useEffect called
 
 export default Body;
